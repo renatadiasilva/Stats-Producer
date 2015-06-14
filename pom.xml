@@ -87,7 +87,7 @@
 					<!-- will main class to MANIFEST.MF -->
 					<archive>
 						<manifest>
-							<mainClass>RunStatsProducer</mainClass>
+							<mainClass>pt.uc.dei.aor.paj.RunStatsProducer</mainClass>
 						</manifest>
 					</archive>
 					<!-- will assembly the exploded dependencies within our uber jar -->
