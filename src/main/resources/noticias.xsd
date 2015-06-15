@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="noticias" type="noticiasType"/>
+  <xs:complexType name="noticiaType">
+    <xs:sequence>
+      <xs:element type="xs:anyURI" name="url"/>
+      <xs:element type="xs:string" name="titulo"/>
+      <xs:element type="xs:dateTime" name="data"/>
+      <xs:element type="xs:string" name="autor"/>
+      <xs:element type="xs:string" name="highlights"/>
+      <xs:element type="xs:string" name="texto"/>
+      <xs:element type="xs:anyURI" name="mediaurl"/>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="id" />
+    <xs:attribute name="local" >
+    	<xs:simpleType>
+    		<xs:restriction base="xs:string">
+    			<xs:enumeration value="us"></xs:enumeration>
+    			<xs:enumeration value="china"></xs:enumeration>
+    			<xs:enumeration value="asia"></xs:enumeration>
+    			<xs:enumeration value="africa"></xs:enumeration>
+    			<xs:enumeration value="middleeast"></xs:enumeration>
+    			<xs:enumeration value="americas"></xs:enumeration>
+    			<xs:enumeration value="europe"></xs:enumeration>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="noticiasType">
+    <xs:sequence>
+      <xs:element type="noticiaType" name="noticia" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
