@@ -67,7 +67,7 @@ public class Subscriber implements MessageListener {
 				System.out.println("String transformed to XML.");
 
 				//XSD verification
-				String filepathXSD = "..\\src\\main\\resources\\text.xsl";
+				String filepathXSD = "..\\src\\main\\resources\\noticia.xsd";
 				if (XMLValidation.validateXMLSchema(filepathXSD,filepathXML))
 					System.out.println("XSD Validation: OK.");
 				else System.out.println("XSD Validation: FAILED!");
