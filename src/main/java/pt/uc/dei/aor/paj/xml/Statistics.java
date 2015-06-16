@@ -90,7 +90,7 @@ public class Statistics {
 		if (l.equals("americas")) return 4;
 		if (l.equals("china")) return 5;
 		if (l.equals("middleeast")) return 6;
-		return 7;
+		return 0;
 	}
 
 	private static boolean less12hours(String d, Date hoje) {
