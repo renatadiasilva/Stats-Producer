@@ -13,6 +13,7 @@ import org.xml.sax.SAXException;
  
 public class XMLValidation {
  
+	//validate XML
     public static boolean validateXMLSchema(String xsdPath, String xmlPath){
          
         try {

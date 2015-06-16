@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj.xml;
+package pt.uc.dei.aor.paj;
 
 import java.io.File;
 import java.io.IOException;
