@@ -15,6 +15,7 @@ import javax.jms.Topic;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import pt.uc.dei.aor.paj.xml.Statistics;
 import pt.uc.dei.aor.paj.xml.TransformXML;
 import pt.uc.dei.aor.paj.xml.XMLValidation;
 
@@ -62,15 +63,18 @@ public class Subscriber implements MessageListener {
 				stop = true;
 			else {
 				System.out.println("Message received.");
-				String filepathXML = outputNameFile();
-				TransformXML.convertStringToXMLFile(msgText,filepathXML);
+				String filePathXML = outputNameFile("output", "xml");
+				TransformXML.convertStringToXMLFile(msgText, filePathXML);
 				System.out.println("String transformed to XML.");
 
 				//XSD verification
-				String filepathXSD = "..\\src\\main\\resources\\noticia.xsd";
-				if (XMLValidation.validateXMLSchema(filepathXSD,filepathXML))
+				String filePathXSD = "..\\src\\main\\resources\\noticia.xsd";
+				if (XMLValidation.validateXMLSchema(filePathXSD, filePathXML)) {
 					System.out.println("XSD Validation: OK.");
-				else System.out.println("XSD Validation: FAILED!");
+					//Compute Statistics
+					Statistics.getStats(filePathXML);
+				} else System.out.println("XSD Validation: FAILED!");
+				
 			}
 		} catch (JMSException e) {
 			e.printStackTrace();
@@ -81,10 +85,10 @@ public class Subscriber implements MessageListener {
 		}
 	}
 	
-	public static String outputNameFile() {
+	public static String outputNameFile(String name, String ext) {
 
 		Calendar now = new GregorianCalendar();
-		String filename = "..\\src\\main\\resources\\output";
+		String filename = "..\\src\\main\\resources\\"+name;
 		filename += "_"+now.get(Calendar.YEAR);
 		int mes = now.get(Calendar.MONTH)+1;
 		filename += "_"+mes+"";
@@ -92,8 +96,7 @@ public class Subscriber implements MessageListener {
 		filename += "_"+now.get(Calendar.HOUR_OF_DAY);
 		filename += "_"+now.get(Calendar.MINUTE);
 		filename += "_"+now.get(Calendar.SECOND);
-		filename += ".xml";
-		System.out.println("NOME FICHEIRO: "+filename);
+		filename += "."+ext;
 		return filename;
 		
 	}

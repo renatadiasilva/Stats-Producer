@@ -1,0 +1,12 @@
+Statistics for Tue Jun 16 04:21:45 BST 2015
+CNN News from last 12 hours:
+
+Africa: 1
+Americas: 0
+Asia: 0
+China: 0
+Europe: 3
+Middle-East: 0
+US: 4
+
+Total: 29
