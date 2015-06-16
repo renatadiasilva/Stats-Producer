@@ -71,12 +71,12 @@ public class Statistics {
 			stats += "Total: "+total12+"\n";
 			return stats;
 
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
+		} catch (ParserConfigurationException pe) {
+            System.out.println("Statistics.getStats Error: "+pe.getMessage());
+		} catch (SAXException se) {
+            System.out.println("Statistics.getStats Error: "+se.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+            System.out.println("Statistics.getStats Error: "+e.getMessage());
 		}
 		return null;
 
@@ -107,7 +107,7 @@ public class Statistics {
 			//News date
 			dataN = format.parse(newsDate);
 		} catch (ParseException e) {
-			e.printStackTrace();
+            System.out.println("Statistics.less12hours Error: "+e.getMessage());
 		}
 		//check if date is less than 12 hours
 		if ((hoje.getTime()-dataN.getTime())/(1000*60*60) >= 12) return false;

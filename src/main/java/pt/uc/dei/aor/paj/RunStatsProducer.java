@@ -35,7 +35,7 @@ public class RunStatsProducer implements MessageListener {
 			cf = InitialContext.doLookup("jms/RemoteConnectionFactory");
 			t = InitialContext.doLookup("jms/topic/PlayTopic");
 		} catch (NamingException e) {
-			e.printStackTrace();
+            System.out.println("RunStatsProducer Error: "+e.getMessage());
 		}
 	}
 
@@ -53,9 +53,9 @@ public class RunStatsProducer implements MessageListener {
 			System.out.println("Exiting...");
 			System.out.println("Goodbye!");
 		} catch (JMSRuntimeException re) {
-			re.printStackTrace();
+            System.out.println("RunStatsProducer.subscribe Error: "+re.getMessage());
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+            System.out.println("RunStatsProducer.subscribe Error: "+e.getMessage());
 		}
 	}
 
@@ -85,7 +85,7 @@ public class RunStatsProducer implements MessageListener {
 					
 					//Compute Statistics
 					String stats = Statistics.getStats(filePathXML);
-					System.out.println("Estatísticas calculadas a partir do ficheiro "+filePathXML);
+					System.out.println("Statistics computed.");
 
 					FileWriter fw = null;		
 					try {
@@ -94,7 +94,7 @@ public class RunStatsProducer implements MessageListener {
 						fw = new FileWriter(file);
 						fw.write(stats);
 						fw.close();
-						System.out.println("Estatísticas guardadas no ficheiro "+filePath);
+						System.out.println("Statistics saved in file.");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -104,10 +104,10 @@ public class RunStatsProducer implements MessageListener {
 				}
 
 			}
-		} catch (JMSException e) {
-			e.printStackTrace();
+		} catch (JMSException je) {
+            System.out.println("RunStatsProducer.onMessage Error: "+je.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
+            System.out.println("RunStatsProducer.onMessage Error: "+e.getMessage());
 		}
 	}
 

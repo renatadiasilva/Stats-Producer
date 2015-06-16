@@ -3,12 +3,14 @@ package pt.uc.dei.aor.paj.xml;
 import java.io.File;
 import java.io.IOException;
  
+
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
  
+
 import org.xml.sax.SAXException;
  
 public class XMLValidation {
@@ -24,7 +26,7 @@ public class XMLValidation {
             validator.validate(new StreamSource(new File(xmlPath)));
             return true;
         } catch (IOException | SAXException e) {
-            System.out.println("Exception: "+e.getMessage());
+            System.out.println("XMLValidation Error: "+e.getMessage());
             return false;
         }
     }
