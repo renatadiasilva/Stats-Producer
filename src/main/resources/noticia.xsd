@@ -11,7 +11,6 @@
       <xs:element type="xs:string" name="texto"/>
       <xs:element type="xs:anyURI" name="mediaurl"/>
     </xs:sequence>
-    <xs:attribute type="xs:byte" name="id" />
     <xs:attribute name="local" >
     	<xs:simpleType>
     		<xs:restriction base="xs:string">
