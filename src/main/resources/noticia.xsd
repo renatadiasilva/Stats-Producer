@@ -10,6 +10,7 @@
       <xs:element type="xs:string" name="highlights" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element type="xs:string" name="texto"/>
       <xs:element type="xs:anyURI" name="mediaurl"/>
+      <xs:element type="xs:anyURI" name="videourl" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute name="local" >
     	<xs:simpleType>
