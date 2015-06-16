@@ -21,7 +21,8 @@ public class Statistics {
 	public static String getStats(String xmlPath) {
 
 		int count[] = new int[7];
-
+		int total12 = 0;
+		
 		//inicializar
 		for (int i = 0; i < 7; i++) count[i] = 0;
 
@@ -39,8 +40,7 @@ public class Statistics {
 			//today's date
 			Date hoje = new Date();
 
-			int totalNews = nList.getLength();
-			for (int i = 0; i < totalNews; i++) {
+			for (int i = 0; i < nList.getLength(); i++) {
 
 				//node NOTICIA
 				Node nNode = nList.item(i);
@@ -53,7 +53,7 @@ public class Statistics {
 					String data = eElement.getElementsByTagName("data").item(0).getTextContent();
 					if (less12hours(data, hoje)) {
 						count[index]++;
-						System.out.println(index+" "+data);
+						total12++;
 					}
 
 				}
@@ -68,7 +68,7 @@ public class Statistics {
 			stats += "Europe: "+count[1]+"\n";
 			stats += "Middle-East: "+count[6]+"\n";
 			stats += "US: "+count[0]+"\n\n";
-			stats += "Total: "+totalNews+"\n";
+			stats += "Total: "+total12+"\n";
 			return stats;
 
 		} catch (ParserConfigurationException e) {
