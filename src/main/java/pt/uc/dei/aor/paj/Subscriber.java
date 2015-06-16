@@ -1,5 +1,8 @@
 package pt.uc.dei.aor.paj;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -75,6 +78,21 @@ public class Subscriber implements MessageListener {
 					Statistics.getStats(filePathXML);
 				} else System.out.println("XSD Validation: FAILED!");
 				
+				String stats = Statistics.getStats(filePathXML);
+				System.out.println("Estatísticas calculadas a partir do ficheiro "+filePathXML);
+				
+				FileWriter fw = null;		
+				try {
+					String filePath= Subscriber.outputNameFile("stats","txt");
+					File file = new File(filePath);
+					fw = new FileWriter(file);
+					fw.write(stats);
+					fw.close();
+					System.out.println("Estatísticas guardadas no ficheiro "+filePath);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
 		} catch (JMSException e) {
 			e.printStackTrace();
