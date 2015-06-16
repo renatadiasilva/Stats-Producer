@@ -7,7 +7,7 @@
       <xs:element type="xs:string" name="titulo"/>
       <xs:element type="xs:dateTime" name="data"/>
       <xs:element type="xs:string" name="autor"/>
-      <xs:element type="xs:string" name="highlights"/>
+      <xs:element type="xs:string" name="highlights" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element type="xs:string" name="texto"/>
       <xs:element type="xs:anyURI" name="mediaurl"/>
     </xs:sequence>

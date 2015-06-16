@@ -89,7 +89,7 @@ public class Statistics {
 		if (l.equals("africa")) return 3;
 		if (l.equals("americas")) return 4;
 		if (l.equals("china")) return 5;
-		if (l.equals("middle-east")) return 6;
+		if (l.equals("middleeast")) return 6;
 		return 7;
 	}
 
